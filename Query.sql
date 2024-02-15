@@ -103,6 +103,10 @@ group by ci.cid, c.name, c.position, c.status, c.vid
 having max(if.rating) = 5 
 
 --19. List all candidates who have received an average rating above a certain threshold.
+select CID
+from CandidateInterview
+group by CID
+having AVG((select rating from InterviewFeedback where InterviewFeedback.ID = CandidateInterview.ID)) > 3; -- Assuming the threshold is 3
 
 
 
